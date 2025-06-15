@@ -1,13 +1,18 @@
-const popup = document.getElementById('anniversary-popup');
-const yesButtons = document.querySelectorAll('.yes-btn');
+
+const yesBtn1 = document.getElementById('yesBtn1');
+const yesBtn2 = document.getElementById('yesBtn2');
+const popup = document.getElementById('anniversaryPopup');
 const menu = document.getElementById('menu');
 
-yesButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    popup.style.display = 'none';
-    menu.classList.remove('hidden');
-  });
-});
+function showMenu() {
+  popup.style.display = 'none';
+  menu.classList.remove('hidden');
+}
+
+yesBtn1.addEventListener('click', showMenu);
+yesBtn2.addEventListener('click', showMenu);
+
+
 
 window.onload = function() {
   dragElement(document.getElementById("anniversaryPopup"));
