@@ -9,23 +9,40 @@ yesButtons.forEach(button => {
   });
 });
 
-dragElement(document.getElementById("anniversaryPopup"));
+window.onload = function() {
+  dragElement(document.getElementById("anniversaryPopup"));
 
-function dragElement(elmnt) {
-  let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  function dragElement(elmnt) {
+    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
-  elmnt.onmousedown = dragMouseDown;
+    elmnt.onmousedown = dragMouseDown;
 
-  function dragMouseDown(e) {
-    e = e || window.event;
-    // Only start dragging if not clicking on a button
-    if (e.target.tagName === "BUTTON") return;
-    e.preventDefault();
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    document.onmousemove = elementDrag;
+    function dragMouseDown(e) {
+      if (e.target.tagName === "BUTTON") return; // Don’t drag if button clicked
+      e.preventDefault();
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+      document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+      e.preventDefault();
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+      elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+      elmnt.style.transform = "none"; // Disable center transform once moved
+    }
+
+    function closeDragElement() {
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
   }
+};
 
   function elementDrag(e) {
     e = e || window.event;
