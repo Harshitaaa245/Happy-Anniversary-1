@@ -114,19 +114,27 @@ body {
   top: 100px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.5);
-  border: 2px dashed #ff90cb;
-  padding: 2rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 0 20px #ffc0e6;
   width: 90%;
-  max-width: 600px;
+  max-width: 620px;
+  background: linear-gradient(135deg, #ffd0ec 0%, #ffe0f4 50%, #fff6fb 100%);
+  border: 6px solid #ff90cb;
+  border-radius: 30px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 0 35px rgba(255, 153, 204, 0.5), 0 8px 20px rgba(0,0,0,0.1);
   z-index: 900;
   font-family: 'Pixelify Sans', cursive;
   text-align: center;
-  backdrop-filter: blur(6px);
   animation: fadeIn 0.6s ease;
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+
+  /* Optional: give it a soft faux-3D bevel */
+  border-top: 6px solid #ffc6e8;
+  border-left: 6px solid #ffc6e8;
+  border-bottom: 6px solid #ff70b5;
+  border-right: 6px solid #ff70b5;
 }
+
 
 .menu-title {
   font-size: 1.5rem;
