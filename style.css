@@ -1,0 +1,114 @@
+body {
+  margin: 0;
+  font-family: 'Pixelify Sans', cursive;
+  background: linear-gradient(to bottom right, #ffd9ec, #ffe0f0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 🎀 Popup */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 200, 235, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.popup-box {
+  background: #fff0fa;
+  border: 3px dashed #ff79b0;
+  padding: 30px 40px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 0 30px #ffaad8;
+}
+
+.popup-box h2 {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.8rem;
+  color: #d6006f;
+  margin-bottom: 10px;
+}
+
+.popup-box p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #6b003f;
+}
+
+.popup-buttons button {
+  background: #ff9ac2;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-family: 'Pixelify Sans', cursive;
+  margin: 0 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 2px 2px 10px #ff69b4;
+  transition: transform 0.2s ease;
+}
+
+.popup-buttons button:hover {
+  transform: scale(1.1);
+}
+
+/* 🌸 Menu */
+.hidden {
+  display: none;
+}
+
+#menu {
+  text-align: center;
+  padding: 40px 20px;
+  animation: fadeIn 1s ease forwards;
+}
+
+.menu-title {
+  font-size: 2rem;
+  color: #ff55a5;
+  margin-bottom: 30px;
+  font-family: 'Pacifico', cursive;
+  text-shadow: 1px 1px white;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.menu-item {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px dotted #ff90c1;
+}
+
+.menu-item:hover {
+  transform: scale(1.05);
+  background: #ffeaf5;
+}
+
+.icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #d6006f;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
