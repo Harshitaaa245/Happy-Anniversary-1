@@ -1,24 +1,30 @@
 body {
   margin: 0;
-  font-family: 'Pixelify Sans', cursive;
-  background: linear-gradient(to bottom right, #ffd9ec, #ffe0f0);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  padding: 0;
+  font-family: 'Pixelify Sans', sans-serif;
+  background: url('images/background.jpg') no-repeat center center fixed;
+  background-size: cover;
   overflow: hidden;
 }
 
+
 /* 🎀 Popup */
 .popup {
-  position: fixed;
-  inset: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: rgba(255, 200, 235, 0.85);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
+  border: 2px solid #ff69b4;
+  padding: 2rem;
+  border-radius: 1rem;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
 }
+
 
 .popup-box {
   background: #fff0fa;
