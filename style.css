@@ -151,14 +151,21 @@ body {
 
 .menu-item {
   width: 100px;
+  height: 120px; /* optional: gives consistent height */
   background: #fff7fb;
   border: 2px solid #ffb6da;
-  padding: 1rem;
+  padding: 1rem 0.5rem;
   border-radius: 1rem;
   cursor: pointer;
   transition: transform 0.2s ease;
   box-shadow: 0 0 8px #ffa3c7;
+  overflow: hidden; /* ✨ stops image from spilling */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
 
 .menu-item:hover {
   transform: scale(1.08);
@@ -173,5 +180,17 @@ body {
   display: block;
   margin-top: 0.5rem;
   font-size: 0.9rem;
+}
+
+.icon-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover .icon-img {
+  transform: scale(1.1) rotate(3deg);
 }
 
