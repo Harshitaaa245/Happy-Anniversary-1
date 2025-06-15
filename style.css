@@ -109,24 +109,40 @@ body {
   100% { opacity: 1; transform: translateY(0); }
 }
 
-#menu {
+  #menu {
   position: fixed;
-  top: 100px;
+  top: 80px;
   left: 50%;
   transform: translateX(-50%);
-  width: 90%;
-  max-width: 620px;
-  background: linear-gradient(135deg, #ffd0ec 0%, #ffe0f4 50%, #fff6fb 100%);
-  border: 6px solid #ff90cb;
-  border-radius: 30px;
-  padding: 2.5rem 2rem;
-  box-shadow: 0 0 35px rgba(255, 153, 204, 0.5), 0 8px 20px rgba(0,0,0,0.1);
+  width: 95%;
+  max-width: 750px;
+  padding: 2.5rem 3rem;
+  background: linear-gradient(145deg, rgba(255,245,255,0.9), rgba(255,220,245,0.7));
+  border: 4px solid #ff90cb;
+  border-radius: 20px;
+  box-shadow: inset 0 0 20px #ffe3f0, 0 0 40px #ffaad8;
+  backdrop-filter: blur(12px);
+  text-align: center;
   z-index: 900;
   font-family: 'Pixelify Sans', cursive;
-  text-align: center;
   animation: fadeIn 0.6s ease;
-  backdrop-filter: blur(8px);
+  position: relative;
   overflow: hidden;
+}
+
+#menu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 100%;
+  background: linear-gradient(to right, #ffc6e6, #ffe6f6);
+  border-bottom: 2px solid #ff9ac2;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
 
   /* Optional: give it a soft faux-3D bevel */
   border-top: 6px solid #ffc6e8;
@@ -137,9 +153,11 @@ body {
 
 
 .menu-title {
-  font-size: 1.5rem;
+  font-size: 2rem;
+  margin-top: 1.2rem;
+  margin-bottom: 1.8rem;
   color: #d6006f;
-  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px #ffaad8;
 }
 
 .menu-grid {
@@ -150,26 +168,31 @@ body {
 }
 
 .menu-item {
-  width: 100px;
-  height: 120px; /* optional: gives consistent height */
-  background: #fff7fb;
+  width: 120px;
+  height: 140px;
+  background: radial-gradient(circle at top left, #fff0fa, #ffdff0);
   border: 2px solid #ffb6da;
-  padding: 1rem 0.5rem;
+  padding: 1rem;
   border-radius: 1rem;
-  cursor: pointer;
+  box-shadow: 0 6px 12px #ffb6da;
   transition: transform 0.2s ease;
-  box-shadow: 0 0 8px #ffa3c7;
-  overflow: hidden; /* ✨ stops image from spilling */
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-
 .menu-item:hover {
   transform: scale(1.08);
   background-color: #ffeaf5;
+}
+
+.menu-item img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
 }
 
 .icon {
