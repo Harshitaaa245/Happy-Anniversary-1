@@ -1,7 +1,7 @@
 
 const yesBtn1 = document.getElementById('yesBtn1');
 const yesBtn2 = document.getElementById('yesBtn2');
-const popup = document.getElementById('anniversaryPopup');
+const popup = document.getElementById('anniversary-popup'); // Fixed ID
 const menu = document.getElementById('menu');
 
 function showMenu() {
@@ -12,10 +12,8 @@ function showMenu() {
 yesBtn1.addEventListener('click', showMenu);
 yesBtn2.addEventListener('click', showMenu);
 
-
-
-window.onload = function() {
-  dragElement(document.getElementById("anniversaryPopup"));
+window.onload = function () {
+  dragElement(document.getElementById("anniversary-popup"));
 
   function dragElement(elmnt) {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -23,7 +21,8 @@ window.onload = function() {
     elmnt.onmousedown = dragMouseDown;
 
     function dragMouseDown(e) {
-      if (e.target.tagName === "BUTTON") return; // Don’t drag if button clicked
+      // Don't allow dragging when clicking a button
+      if (e.target.tagName === "BUTTON") return;
       e.preventDefault();
       pos3 = e.clientX;
       pos4 = e.clientY;
@@ -39,7 +38,7 @@ window.onload = function() {
       pos4 = e.clientY;
       elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
       elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-      elmnt.style.transform = "none"; // Disable center transform once moved
+      elmnt.style.transform = "none"; // Disable centering transform after moving
     }
 
     function closeDragElement() {
@@ -49,20 +48,4 @@ window.onload = function() {
   }
 };
 
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-  }
-
-  function closeDragElement() {
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
-}
 
