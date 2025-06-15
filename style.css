@@ -23,6 +23,7 @@ body {
   width: 200px;
   text-align: center;
   animation: floaty 3s ease-in-out infinite, glow 2s ease-in-out infinite;
+  cursor: move;
 }
 
 
