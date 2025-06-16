@@ -230,24 +230,24 @@
     }
   });
 
-  const doodleContainer = document.querySelector('.doodle-background');
+  const doodleContainer = document.createElement('div');
+  document.body.appendChild(doodleContainer);
 
-  for (let i = 0; i < 25; i++) {
-    const doodle = document.createElement('img');
-    doodle.src = 'images/doodle.png';
-    doodle.className = 'doodle';
+  const doodleSrc = 'images/doodle.png'; // Your doodle image path
+  const rows = 6; // Number of rows of doodles
+  const cols = 10; // Number of columns of doodles
+  const spacingX = window.innerWidth / cols;
+  const spacingY = window.innerHeight / rows;
 
-    // Randomize position
-    doodle.style.top = `${Math.random() * 100}%`;
-    doodle.style.left = `${Math.random() * 100}%`;
-
-    // Random delay & animation duration
-    const duration = 3 + Math.random() * 3;
-    const delay = Math.random() * 2;
-    doodle.style.animation = `sway ${duration}s ease-in-out infinite alternate`;
-    doodle.style.animationDelay = `${delay}s`;
-
-    doodleContainer.appendChild(doodle);
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const doodle = document.createElement('img');
+      doodle.src = doodleSrc;
+      doodle.className = 'doodle';
+      doodle.style.left = `${c * spacingX + spacingX / 2}px`;
+      doodle.style.top = `${r * spacingY + spacingY / 2}px`;
+      doodleContainer.appendChild(doodle);
+    }
   }
 </script>
 
