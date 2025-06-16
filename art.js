@@ -1,28 +1,31 @@
-const images = Array.from({ length: 18 }, (_, i) => `images/art${i + 1}.jpg`);
-const book = document.querySelector('.book');
+const book = document.getElementById('book');
+const totalPages = 18 + 1; // 18 art pages + 1 cover
 
-images.forEach((imgSrc, i) => {
+for (let i = 0; i < totalPages; i++) {
   const page = document.createElement('div');
   page.className = 'page';
 
-  const left = document.createElement('div');
-  left.className = 'left-page';
+  if (i === 0) {
+    page.classList.add('cover');
+    page.innerHTML = "Hersey’s Doodles";
+  }
 
-  const right = document.createElement('div');
-  right.className = 'right-page';
-
-  const img = document.createElement('img');
-  img.src = imgSrc;
-  right.appendChild(img);
-
-  const pageNumber = document.createElement('span');
-  pageNumber.className = 'page-number';
-  pageNumber.textContent = `Page ${i + 1}`;
-  right.appendChild(pageNumber);
-
-  page.appendChild(left);
-  page.appendChild(right);
   book.appendChild(page);
+}
+
+// Flip logic
+let currentPage = 0;
+const pages = document.querySelectorAll('.page');
+
+pages.forEach((page, i) => {
+  page.addEventListener('click', () => {
+    if (i === currentPage && i < pages.length - 1) {
+      pages[i].classList.add('flipped');
+      currentPage++;
+    }
+  });
+});
+
 
   page.addEventListener('click', () => {
     page.classList.toggle('flipped');
