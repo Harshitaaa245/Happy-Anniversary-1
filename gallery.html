@@ -229,6 +229,26 @@
       musicToggle.textContent = '🔇'; // Icon for paused
     }
   });
+
+  const doodleContainer = document.querySelector('.doodle-background');
+
+  for (let i = 0; i < 25; i++) {
+    const doodle = document.createElement('img');
+    doodle.src = 'images/doodle.png';
+    doodle.className = 'doodle';
+
+    // Randomize position
+    doodle.style.top = `${Math.random() * 100}%`;
+    doodle.style.left = `${Math.random() * 100}%`;
+
+    // Random delay & animation duration
+    const duration = 3 + Math.random() * 3;
+    const delay = Math.random() * 2;
+    doodle.style.animation = `sway ${duration}s ease-in-out infinite alternate`;
+    doodle.style.animationDelay = `${delay}s`;
+
+    doodleContainer.appendChild(doodle);
+  }
 </script>
 
 </html>
