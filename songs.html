@@ -1,39 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Songs for You 🎶</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="songs.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Pixelify Sans', cursive;
+      background: #ffe6f2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .songs-popup {
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff0fa;
+      border: 2px dashed #ff7bb1;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 12px #ffaad8;
+      z-index: 1000;
+      text-align: center;
+    }
+    .songs-popup-box h2 {
+      color: #d6006f;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .songs-popup-box button {
+      background: #ff8eb5;
+      border: none;
+      padding: 8px 20px;
+      color: white;
+      font-size: 1rem;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+    #carousel {
+      position: relative;
+      margin-top: 4rem;
+      text-align: center;
+      width: 90%;
+      max-width: 700px;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+    .slide {
+      min-width: 100%;
+      height: 300px;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    }
+    .nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ff69b4;
+      z-index: 10;
+    }
+    .left { left: 0; }
+    .right { right: 0; }
+    .now-playing {
+      margin-top: 1rem;
+      color: #6b003f;
+    }
+    .now-playing h3 {
+      margin: 0.3rem 0;
+    }
+    audio {
+      width: 100%;
+      max-width: 500px;
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Popup -->
   <div class="songs-popup" id="songsPopup">
     <div class="songs-popup-box">
       <h2>Here are songs that remind me of you :)</h2>
       <button id="closePopup">Let’s Go! 💕</button>
     </div>
   </div>
-
-  <!-- Carousel -->
   <main id="carousel" class="hidden">
     <button class="nav left" id="prevBtn">◀</button>
-
-    <div class="carousel-track" id="carouselTrack">
-      <!-- JS will inject slides -->
-    </div>
-
+    <div class="carousel-track" id="carouselTrack"></div>
     <button class="nav right" id="nextBtn">▶</button>
-
     <div class="now-playing" id="nowPlaying">
       <h3 id="songTitle">Song Title</h3>
       <p id="songArtist">Artist</p>
       <audio controls id="audioPlayer"></audio>
     </div>
   </main>
+  <script>
+    const songs = [
+      {
+        title: "Everlong",
+        artist: "Foo Fighters",
+        image: "https://via.placeholder.com/700x300/ffcce5/000000?text=Everlong",
+        audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+      },
+      {
+        title: "Lover, You Should’ve Come Over",
+        artist: "Jeff Buckley",
+        image: "https://via.placeholder.com/700x300/ffb6c1/000000?text=Lover",
+        audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+      }
+    ];
 
-  <script src="songs.js"></script>
+    const track = document.getElementById('carouselTrack');
+    const audio = document.getElementById('audioPlayer');
+    const title = document.getElementById('songTitle');
+    const artist = document.getElementById('songArtist');
+    let currentIndex = 0;
+
+    songs.forEach(song => {
+      const slide = document.createElement('div');
+      slide.className = 'slide';
+      slide.innerHTML = `<img src="${song.image}" alt="${song.title}" />`;
+      track.appendChild(slide);
+    });
+
+    function updateSlide(index) {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      title.textContent = songs[index].title;
+      artist.textContent = songs[index].artist;
+      audio.src = songs[index].audio;
+      audio.play();
+    }
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+      updateSlide(currentIndex);
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % songs.length;
+      updateSlide(currentIndex);
+    });
+
+    document.getElementById('closePopup').addEventListener('click', () => {
+      document.getElementById('songsPopup').style.display = 'none';
+      document.getElementById('carousel').classList.remove('hidden');
+      updateSlide(currentIndex);
+    });
+  </script>
 </body>
 </html>
+
