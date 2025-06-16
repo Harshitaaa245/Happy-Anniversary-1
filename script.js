@@ -63,5 +63,10 @@ document.querySelector('.menu-item:nth-child(6)').addEventListener('click', () =
   window.open('songs.html', '_blank');
 });
 
+document.querySelector('.menu-item:nth-child(5)').addEventListener('click', () => {
+  window.open('art.html', '_blank');
+});
+
+
 
 
