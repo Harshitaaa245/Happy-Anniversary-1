@@ -26,6 +26,7 @@
       animation: float 2s ease-in-out infinite alternate;
       z-index: 2;
       cursor: pointer;
+      background: none;
     }
 
     @keyframes float {
@@ -63,7 +64,6 @@
       to { transform: translateX(-50%) scale(1); opacity: 1; }
     }
 
-    /* Close Button */
     .close-btn {
       position: absolute;
       top: 10px;
@@ -78,32 +78,31 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
-    /* Letter Text */
     .letter-content {
       color: #88004d;
       font-size: 1.1rem;
+      font-family: 'Pixelify Sans', cursive;
       white-space: pre-wrap;
+      line-height: 1.6;
     }
 
-    /* Typing effect */
+    /* Typing effect with fixed-size blinking cursor */
     .typewriter {
-      overflow: hidden;
+      position: relative;
+      display: inline-block;
+      font-size: 1.1rem;
+      line-height: 1.4rem;
+      font-family: 'Pixelify Sans', cursive;
       white-space: pre-wrap;
-      border-right: 0.15em solid #ff82b2;
-      animation: typing 4s steps(80, end), blink-caret 0.75s step-end infinite;
     }
 
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
+  
     @keyframes blink-caret {
-      from, to { border-color: transparent; }
-      50% { border-color: #ff82b2; }
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
     }
 
-    /* Gradient Scrollbar */
+    /* Scrollbar */
     .letter-tab::-webkit-scrollbar {
       width: 8px;
     }
@@ -117,11 +116,30 @@
       background: linear-gradient(180deg, #ffaad4, #ff69b4);
       border-radius: 10px;
     }
+
+    /* Back to Home button */
+    .back-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffd3e6;
+      color: #88004d;
+      border: 2px dashed #ff82b2;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 12px;
+      font-family: 'Pixelify Sans', cursive;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 2px 8px #ffaacc;
+      z-index: 20;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Envelope Intro with Custom Image -->
+  <!-- Envelope Image -->
   <img src="images/download__3_-removebg-preview (1).png" alt="Envelope" class="envelope-intro" id="envelope" />
 
   <!-- Letter Tab -->
@@ -132,8 +150,11 @@
     </div>
   </div>
 
+  <!-- Back to Home -->
+  <a href="index.html" class="back-btn">Back to Home</a>
+
   <script>
-    const fullText = `
+  const fullText = `
 Dearest Meri Jaan,
 
 This letter is just a small piece of all the words I’ve been holding in my heart. You’ve turned ordinary moments into memories I want to carry forever. There’s so much art in your laughter, poetry in your eyes, and warmth in the way you say my name.
@@ -145,26 +166,40 @@ I’ll write to you a thousand times over, and it still won’t be enough to tel
 Love and light forever,
 Hersey 💗`;
 
-    const envelope = document.getElementById('envelope');
-    const letter = document.getElementById('letterTab');
-    const typedText = document.getElementById('typedText');
+  const envelope = document.getElementById('envelope');
+  const letter = document.getElementById('letterTab');
+  const typedText = document.getElementById('typedText');
 
-    envelope.addEventListener('click', () => {
-      envelope.style.display = 'none';
-      letter.style.display = 'block';
-      typeWriterEffect(fullText);
-    });
+  // Create cursor element
+  const cursor = document.createElement("span");
+  cursor.id = "cursor";
+  cursor.textContent = "|";
+  cursor.style.animation = "blink-caret 0.8s step-end infinite";
+  cursor.style.display = "inline-block";
+  cursor.style.marginLeft = "1px";
+  cursor.style.color = "#ff82b2";
 
-    function typeWriterEffect(text, i = 0) {
-      if (i < text.length) {
-        typedText.innerHTML += text.charAt(i);
-        setTimeout(() => typeWriterEffect(text, i + 1), 25);
-      }
+  envelope.addEventListener('click', () => {
+    envelope.style.display = 'none';
+    letter.style.display = 'block';
+    typedText.textContent = '';
+    typedText.appendChild(cursor);
+    typeWriterEffect(fullText);
+  });
+
+  function typeWriterEffect(text, i = 0) {
+    if (i < text.length) {
+      const char = text.charAt(i);
+      cursor.remove(); // remove, so we can re-append after the new char
+      typedText.textContent += char;
+      typedText.appendChild(cursor);
+      setTimeout(() => typeWriterEffect(text, i + 1), 25);
     }
+  }
 
-    function closeLetter() {
-      letter.style.display = 'none';
-    }
-  </script>
+  function closeLetter() {
+    letter.style.display = 'none';
+  }
+</script>
 </body>
 </html>
