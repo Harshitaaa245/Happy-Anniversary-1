@@ -45,7 +45,7 @@ body {
 .polaroid .tape {
   position: absolute;
   top: -25px;
-  left: -6px;
+  left: -3px;
   transform: translateX(-50%) rotate(-5deg);
   width: 86px;
   pointer-events: none;
