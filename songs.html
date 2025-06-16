@@ -1,183 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Songs For You</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Pixelify Sans', cursive;
-      background: linear-gradient(135deg, #ffe5f0, #ffb3d1);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .playlist-popup {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      z-index: 10;
-    }
-
-    .playlist-popup h2 {
-      color: #d6006f;
-      margin-bottom: 0.5rem;
-    }
-
-    .playlist-popup p {
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
-
-    .playlist-popup button {
-      background-color: #ff8fb1;
-      color: white;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.9rem;
-    }
-
-    .playlist-section {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      width: 90%;
-      max-width: 600px;
-      margin-top: 2rem;
-    }
-
-    .carousel {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      position: relative;
-    }
-
-    .album {
-      width: 200px;
-      height: 200px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .controls {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .controls button {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #d6006f;
-    }
-
-    .song-info {
-      text-align: center;
-      margin-top: 1rem;
-    }
-
-    .song-info h3 {
-      margin: 0;
-      font-size: 1rem;
-    }
-
-    audio {
-      width: 100%;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <title>Songs for You 🎶</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="songs.css" />
 </head>
 <body>
 
-  <div class="playlist-popup" id="playlistPopup">
-    <h2>Someone sent you a playlist</h2>
-    <p>Hey, it's for you. I hope you listen to it 🤍</p>
-    <button onclick="openPlaylist()">Open Playlist</button>
+  <div class="songs-popup" id="songsPopup">
+    <div class="songs-popup-box">
+      <h2>🎵 Here are songs just for you!</h2>
+      <button id="closePopup">Let’s Go! 💕</button>
+    </div>
   </div>
 
-  <div class="playlist-section" id="playlistSection">
-    <div class="carousel">
-      <button onclick="prevSong()">&#9664;</button>
-      <img id="albumImage" class="album" src="/mnt/data/IMG-20250616-WA0045[1].jpg" alt="album">
-      <button onclick="nextSong()">&#9654;</button>
+  <main id="carousel" class="hidden">
+    <button class="nav left" id="prevBtn">◀</button>
+
+    <div class="carousel-track" id="carouselTrack">
+      <!-- Slides will be inserted by JS -->
     </div>
-    <div class="song-info">
-      <h3 id="songTitle">Daylight</h3>
-      <p id="songArtist">Taylor Swift</p>
+
+    <button class="nav right" id="nextBtn">▶</button>
+
+    <div class="now-playing" id="nowPlaying">
+      <h3 id="songTitle">Song Title</h3>
+      <p id="songArtist">Artist</p>
+      <audio controls id="audioPlayer"></audio>
     </div>
-    <audio id="audioPlayer" controls>
-      <source src="song1.mp3" type="audio/mp3">
-      Your browser does not support the audio element.
-    </audio>
-  </div>
+  </main>
 
-  <script>
-    const popup = document.getElementById('playlistPopup');
-    const section = document.getElementById('playlistSection');
-    const albumImage = document.getElementById('albumImage');
-    const songTitle = document.getElementById('songTitle');
-    const songArtist = document.getElementById('songArtist');
-    const audioPlayer = document.getElementById('audioPlayer');
-
-    const songs = [
-      {
-        title: 'Daylight',
-        artist: 'Taylor Swift',
-        image: '/mnt/data/IMG-20250616-WA0045[1].jpg',
-        audio: 'song1.mp3'
-      },
-      {
-        title: 'Another Song',
-        artist: 'Another Artist',
-        image: '/mnt/data/IMG-20250616-WA0046[1].jpg',
-        audio: 'song2.mp3'
-      }
-    ];
-
-    let currentSong = 0;
-
-    function openPlaylist() {
-      popup.style.display = 'none';
-      section.style.display = 'flex';
-    }
-
-    function updatePlayer() {
-      albumImage.src = songs[currentSong].image;
-      songTitle.textContent = songs[currentSong].title;
-      songArtist.textContent = songs[currentSong].artist;
-      audioPlayer.src = songs[currentSong].audio;
-      audioPlayer.play();
-    }
-
-    function nextSong() {
-      currentSong = (currentSong + 1) % songs.length;
-      updatePlayer();
-    }
-
-    function prevSong() {
-      currentSong = (currentSong - 1 + songs.length) % songs.length;
-      updatePlayer();
-    }
-  </script>
+  <script src="songs.js"></script>
 </body>
 </html>
+
