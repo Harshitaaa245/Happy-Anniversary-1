@@ -115,30 +115,3 @@ body {
   transform: scale(1.1);
 }
 
-/* Background doodle container */
-.doodle-background {
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  pointer-events: none;
-  z-index: -1; /* push behind all content */
-}
-
-/* Individual doodle */
-.doodle {
-  position: absolute;
-  width: 80px;
-  opacity: 0.6;
-  animation: sway 4s ease-in-out infinite alternate;
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* Keyframes for rotation/sway */
-@keyframes sway {
-  0% { transform: rotate(-15deg) translateY(0); }
-  100% { transform: rotate(15deg) translateY(5px); }
-}
