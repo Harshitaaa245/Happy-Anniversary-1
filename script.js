@@ -55,4 +55,8 @@ window.onload = function () {
   }
 };
 
+document.querySelector('.menu-item:nth-child(1)').addEventListener('click', () => {
+  window.open('gallery.html', '_blank');
+});
+
 
