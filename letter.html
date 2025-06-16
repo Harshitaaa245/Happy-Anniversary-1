@@ -21,9 +21,11 @@
       top: 40%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 5rem;
+      width: 120px;
+      height: auto;
       animation: float 2s ease-in-out infinite alternate;
       z-index: 2;
+      cursor: pointer;
     }
 
     @keyframes float {
@@ -115,25 +117,12 @@
       background: linear-gradient(180deg, #ffaad4, #ff69b4);
       border-radius: 10px;
     }
-
-    /* Optional background emojis */
-    body::after {
-      content: "💖 💕 💗 💓 💘";
-      font-size: 3rem;
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      animation: float 6s infinite linear alternate;
-      opacity: 0.2;
-      pointer-events: none;
-      z-index: 0;
-    }
   </style>
 </head>
 <body>
 
-  <!-- Envelope Intro -->
-  <div class="envelope-intro" id="envelope">💌</div>
+  <!-- Envelope Intro with Custom Image -->
+  <img src="images/download__3_-removebg-preview.png" alt="Envelope" class="envelope-intro" id="envelope" />
 
   <!-- Letter Tab -->
   <div class="letter-tab" id="letterTab">
