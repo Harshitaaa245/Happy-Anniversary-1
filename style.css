@@ -25,6 +25,24 @@ body {
   animation: floaty 3s ease-in-out infinite, glow 2s ease-in-out infinite;
   cursor: move;
 }
+.close-menu-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 18px;
+  background: none;
+  border: none;
+  color: #ff5e9c;
+  cursor: pointer;
+  font-family: 'Pixelify Sans', cursive;
+  z-index: 1001;
+  transition: transform 0.2s ease;
+}
+
+.close-menu-btn:hover {
+  color: #d6006f;
+  transform: scale(1.1);
+}
 
 
 .popup-box {
