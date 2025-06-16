@@ -27,6 +27,7 @@ pages.forEach((page, i) => {
 });
 
 
+
   page.addEventListener('click', () => {
     page.classList.toggle('flipped');
   });
