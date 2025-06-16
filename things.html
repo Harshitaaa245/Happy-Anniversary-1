@@ -9,12 +9,12 @@
     body {
       margin: 0;
       font-family: 'Pixelify Sans', cursive;
-      background: url('images/things-bg.jpg') repeat;
-      background-size: 60px;
+      background: url('images/background (2).jpg') no-repeat center center fixed;
+      background-size: cover;
     }
 
     .tab {
-      background: #ffe4f8;
+      background: #ffe4f8cc; /* Slightly transparent background for better readability */
       border: 3px dashed #ff82b2;
       border-radius: 20px;
       width: 90%;
@@ -73,12 +73,17 @@
       cursor: pointer;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       z-index: 99;
+      text-decoration: none;
+    }
+
+    .back-btn:hover {
+      background: #ff92c4;
     }
   </style>
 </head>
 <body>
 
-  <button class="back-btn" onclick="window.history.back()">← Back</button>
+  <a href="index.html" class="back-btn">← Back</a>
 
   <div class="tab">
     <h1>Things I Want to Do With You 💕</h1>
@@ -99,14 +104,15 @@
       <li>Visit a bookstore together</li>
       <li>Recreate our first date</li>
       <li>Go ice skating</li>
-      <li>make out under a streetlight at night</li>
+      <li>Make out under a streetlight at night</li>
       <li>Give you surprise hugs from the back</li>
       <li>Play/mess with your hair while you rest your head on my lap</li>
       <li>Make cute/cringy videos</li>
-      <li>have endless deep conversations about everything and nothing</li>
+      <li>Have endless deep conversations about everything and nothing</li>
       <li>Go to one of those photo booth thingys</li>
     </ol>
   </div>
 
 </body>
 </html>
+
