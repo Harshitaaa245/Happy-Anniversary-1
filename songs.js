@@ -4,7 +4,7 @@ const songs = [
   { title: "I Can't Stop Loving You", artist: "Ray Charles", image: "images/songs3.jpg", audio: "audio/song3.mp3" },
   { title: "I Love You, Honeybear", artist: "Father John Misty", image: "images/songs4.jpg", audio: "audio/song4.mp3" },
   { title: "Work Song", artist: "Hozier", image: "images/songs5.jpg", audio: "audio/song5.mp3" },
-  { title: "Please Don’t Let Me Go", artist: "Olly Murs", image: "images/songs6.jpg", audio: "audio/song6.mp3" },
+  { title: "Please Don’t Let Me Go", artist: "Olly Murs", image: "images/songs6.png", audio: "audio/song6.mp3" },
   { title: "Can't Help Falling in Love", artist: "Elvis Presley", image: "images/songs7.jpg", audio: "audio/song7.mp3" },
   { title: "My Love Will Never Die", artist: "Hozier", image: "images/songs8.jpg", audio: "audio/song8.mp3" },
   { title: "Everlong", artist: "Foo Fighters", image: "images/songs9.jpg", audio: "audio/song9.mp3" },
