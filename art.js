@@ -7,13 +7,18 @@ images.forEach((imgSrc, i) => {
 
   const left = document.createElement('div');
   left.className = 'left-page';
-  left.innerHTML = `<p>Page ${i + 1}</p>`;
 
   const right = document.createElement('div');
   right.className = 'right-page';
+
   const img = document.createElement('img');
   img.src = imgSrc;
   right.appendChild(img);
+
+  const pageNumber = document.createElement('span');
+  pageNumber.className = 'page-number';
+  pageNumber.textContent = `Page ${i + 1}`;
+  right.appendChild(pageNumber);
 
   page.appendChild(left);
   page.appendChild(right);
