@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  padding: 2rem;
+  background: #fff0fa url('images/board-background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Pixelify Sans', cursive;
+}
+
+.gallery-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #d6006f;
+  margin-bottom: 2rem;
+}
+
+.board {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.photos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.polaroid {
+  background: #fff;
+  border: 2px solid #ffb6da;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 180px;
+  transform: rotate(-1deg);
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.polaroid img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.polaroid p {
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  color: #6b003f;
+}
+
+.polaroid:hover {
+  transform: rotate(1deg) scale(1.03);
+}
