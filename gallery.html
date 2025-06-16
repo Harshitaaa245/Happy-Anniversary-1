@@ -206,5 +206,27 @@
   </div>
 
 </body>
+<script>
+  const music = document.getElementById('bg-music');
+  const musicToggle = document.getElementById('music-toggle');
+
+  // Optional: play music after first user interaction if autoplay is blocked
+  window.addEventListener('click', () => {
+    if (music.paused) {
+      music.play();
+    }
+  }, { once: true });
+
+  musicToggle.addEventListener('click', () => {
+    if (music.paused) {
+      music.play();
+      musicToggle.textContent = '🔊'; // Icon for playing
+    } else {
+      music.pause();
+      musicToggle.textContent = '🔇'; // Icon for paused
+    }
+  });
+</script>
+
 </html>
 
