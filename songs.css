@@ -1,1 +1,123 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #ffe0f0, #ffd1ec);
+  font-family: 'Pixelify Sans', cursive;
+  overflow-x: hidden;
+}
+
+.songs-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 192, 203, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.songs-popup-box {
+  background: #fff0f8;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  border: 3px dashed #ff69b4;
+  box-shadow: 0 0 20px #ffb6da;
+}
+
+.songs-popup-box h2 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #d6006f;
+}
+
+.songs-popup-box button {
+  padding: 0.6rem 1.2rem;
+  background: #ff80b3;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+#carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 2rem;
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.slide {
+  width: 200px;
+  flex-shrink: 0;
+  transition: transform 0.4s ease;
+  text-align: center;
+}
+
+.slide img {
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px #ffb6da;
+  border: 3px solid #ffc0e6;
+}
+
+.nav {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #ff69b4;
+  cursor: pointer;
+  user-select: none;
+}
+
+.nav:hover {
+  color: #d6006f;
+}
+
+.now-playing {
+  background: #fff0fa;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px #ffb6da;
+  border: 2px dashed #ff90cb;
+  text-align: center;
+}
+
+.now-playing h3 {
+  margin: 0.2rem;
+  font-size: 1.2rem;
+  color: #d6006f;
+}
+
+.now-playing p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6b003f;
+}
+
+audio {
+  margin-top: 0.6rem;
+  width: 100%;
+  max-width: 400px;
+}
 
