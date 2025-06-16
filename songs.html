@@ -7,93 +7,139 @@
   <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Pixelify Sans', cursive;
-      background: #ffe6f2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-    .songs-popup {
-      position: fixed;
-      top: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #fff0fa;
-      border: 2px dashed #ff7bb1;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 12px #ffaad8;
-      z-index: 1000;
-      text-align: center;
-    }
-    .songs-popup-box h2 {
-      color: #d6006f;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
-    .songs-popup-box button {
-      background: #ff8eb5;
-      border: none;
-      padding: 8px 20px;
-      color: white;
-      font-size: 1rem;
-      border-radius: 12px;
-      cursor: pointer;
-    }
-    .hidden {
-      display: none;
-    }
-    #carousel {
-      position: relative;
-      margin-top: 4rem;
-      text-align: center;
-      width: 90%;
-      max-width: 700px;
-    }
-    .carousel-track {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-      width: 100%;
-    }
-    .slide {
-      min-width: 100%;
-      height: 300px;
-    }
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 20px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-    }
-    .nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 2rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #ff69b4;
-      z-index: 10;
-    }
-    .left { left: 0; }
-    .right { right: 0; }
-    .now-playing {
-      margin-top: 1rem;
-      color: #6b003f;
-    }
-    .now-playing h3 {
-      margin: 0.3rem 0;
-    }
-    audio {
-      width: 100%;
-      max-width: 500px;
-    }
+  margin: 0;
+  padding: 0;
+  font-family: 'Pixelify Sans', cursive;
+  background: #ffe6f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.songs-popup {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff0fa;
+  border: 2px dashed #ff7bb1;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 12px #ffaad8;
+  z-index: 1000;
+  text-align: center;
+}
+
+.songs-popup-box h2 {
+  color: #d6006f;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.songs-popup-box button {
+  background: #ff8eb5;
+  border: none;
+  padding: 8px 20px;
+  color: white;
+  font-size: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+#carousel {
+  position: relative;
+  margin-top: 4rem;
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.song-card {
+  background: #ffe6f7;
+  border: 2px dashed #ffaad8;
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 0 0 15px rgba(255, 153, 204, 0.5);
+  width: 100%;
+  max-width: 500px;
+  transition: transform 0.3s;
+}
+
+.song-card:hover {
+  transform: scale(1.02);
+}
+
+.song-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.song-card h3,
+.song-card p {
+  margin: 0.5rem 0;
+  color: #6b003f;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  background: #ffd6e7;
+  border: 2px dashed #ff69b4;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  color: #ff1493;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.nav:hover {
+  background: #ffb3d9;
+}
+
+.left { left: -60px; }
+.right { right: -60px; }
+
+.now-playing {
+  margin-top: 2rem;
+  text-align: center;
+  color: #6b003f;
+}
+
+audio {
+  width: 100%;
+  max-width: 500px;
+  filter: hue-rotate(-10deg) saturate(1.5) brightness(1.1);
+  accent-color: #ff69b4; /* makes the progress/pause pink in modern browsers */
+}
   </style>
 </head>
 <body>
@@ -192,7 +238,14 @@
     songs.forEach(song => {
       const slide = document.createElement('div');
       slide.className = 'slide';
-      slide.innerHTML = `<img src="${song.image}" alt="${song.title}" />`;
+      slide.innerHTML = `
+  <div class="song-card">
+    <img src="${song.image}" alt="${song.title}" />
+    <h3>${song.title}</h3>
+    <p>${song.artist}</p>
+  </div>
+`;
+
       track.appendChild(slide);
     });
 
