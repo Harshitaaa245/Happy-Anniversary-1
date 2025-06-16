@@ -9,6 +9,13 @@ function showMenu() {
   menu.classList.remove('hidden');
 }
 
+const closeMenuBtn = document.getElementById('close-menu');
+
+closeMenuBtn.addEventListener('click', () => {
+  menu.classList.add('hidden');
+});
+
+
 yesBtn1.addEventListener('click', showMenu);
 yesBtn2.addEventListener('click', showMenu);
 
